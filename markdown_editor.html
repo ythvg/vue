@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Test</title>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script src="./node_modules/marked/lib/marked.js"></script>
+</head>
+<body>
+
+<div id="editor">
+    <textarea v-model="input"></textarea>
+    <div v-html="marked_value"></div>
+</div>
+
+
+<script>
+new Vue({
+  el: '#editor',
+  data: {
+    input: '# fdafdasf'
+  },
+  computed: {
+    marked_value: function() {
+      return marked(this.input);
+    }
+  }
+})
+
+</script>
+
+<style>
+html, body, #editor {
+  margin: 0;
+  height: 100%;
+}
+
+textarea, #editor div {
+  display: inline-block;
+  width: 49%;
+  height: 100%;
+  color: #333;
+  vertical-align: top;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+textarea {
+  font-size: 18px;
+  background-color: #f6f6f6;
+  outline: none;
+  padding: 20px;
+  border: none;
+  border-right: 1px solid #ccc;
+  font-family: 'Monaco', courier, monospace;
+}
+
+</style>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Test</title>
+    <script src="./node_modules/vue/dist/vue.min.js"></script>
+    <script src="./node_modules/marked/lib/marked.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <template v-for="branch in branches">
+        <input type="radio" id="branch" v-model="curBranch" :value="branch">
+        <label for="branch">{{ branch }}</label>
+    </template>
+    <p>vuejs/vue@{{ curBranch }}</p>
+    <ul>
+        <li v-for="commits">
+            
+        </li>
+    </ul>
+</div>
+
+
+<script>
+const apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
+const v = new Vue({
+  el: '#app',
+  data: {
+      branches: ['master', 'develop'],
+      curBranch: 'master',
+      commits: []
+  }
+})
+
+</script>
+
+<style>
+
+</style>
+</body>
+</html>
